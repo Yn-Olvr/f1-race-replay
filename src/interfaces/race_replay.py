@@ -7,7 +7,7 @@ from src.ui_components import LeaderboardComponent, WeatherComponent, LegendComp
 
 SCREEN_WIDTH = 1920
 SCREEN_HEIGHT = 1200
-SCREEN_TITLE = "F1 Replay System"
+SCREEN_TITLE = "F1 Race Replay System"
 
 class F1RaceReplayWindow(arcade.Window):
     def __init__(self, frames, track_statuses, example_lap, drivers, title,
