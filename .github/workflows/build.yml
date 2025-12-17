@@ -1,4 +1,4 @@
-name: Build
+name: CI - SonarScan, Build, Imagescan, push
 on:
   push:
     branches:
@@ -17,3 +17,7 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  
+  trivy:
+    name: trivy-scan
+    runs-on:
