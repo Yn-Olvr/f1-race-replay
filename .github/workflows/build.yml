@@ -25,3 +25,17 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag f1racereplay:$(date +%s) && docker images
+
+  trivy:
+    name: trivy-scanner
+    runs-on: ubuntu-latest
+    steps:
+    - uses: aquasecurity/trivy-action@0.33.1
+    - name: Scan docker images for vulnerabilitis
+      with:
+          image-ref: 'f1racereplay:$(date +%s)'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
