@@ -42,6 +42,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: docker-image
+        path: flracereplay.tar.gz
     - name: Load Docker image
       run: docker load < flracereplay.tar.gz
     - name: Scan docker images for vulnerabilitis
