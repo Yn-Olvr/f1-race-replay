@@ -47,5 +47,5 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Tag and Push to DockerHub
       run: |
-        docker tag f1racereplay:v1 ${{ vars.DOCKERHUB_NAME }}/f1racereplay:v1
-        docker push ${{ vars.DOCKERHUB_NAME }}/f1racereplay:v1
+        docker tag f1racereplay:v1 ${{ vars.DOCKERHUB_NAME }}/f1race:${{ github.run_number }}
+        docker push ${{ vars.DOCKERHUB_NAME }}/f1race:${{ github.run_number }}
