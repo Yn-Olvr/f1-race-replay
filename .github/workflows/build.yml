@@ -24,7 +24,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag f1racereplay:$(date +%s) && docker images
+      run: docker build . --file Dockerfile --tag f1racereplay:v1 && docker images
 
   trivy:
     name: trivy-scanner
