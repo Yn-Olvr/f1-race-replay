@@ -34,7 +34,7 @@ jobs:
     - name: Scan docker images for vulnerabilitis
       uses: aquasecurity/trivy-action@0.33.1
       with:
-          image-ref: 'f1racereplay:$(date +%s)'
+          image-ref: 'f1racereplay:v1'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
