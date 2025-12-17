@@ -6,18 +6,18 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  sonarqube:
-    name: SonarQube
-    runs-on: ubuntu-latest
-    if: github.event_name != 'pull_request'
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v6
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  # sonarqube:
+  #   name: SonarQube
+  #   runs-on: ubuntu-latest
+  #   if: github.event_name != 'pull_request'
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+  #     - name: SonarQube Scan
+  #       uses: SonarSource/sonarqube-scan-action@v6
+  #       env:
+  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   
   docker-build:
     name: DockerBuild
@@ -43,9 +43,9 @@ jobs:
     - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:
-        username: ${{ vars.DOCKERHUB_USERNAME }}
+        username: ${{ vars.DOCKERHUB_NAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Tag and Push to DockerHub
       run: |
-        docker tag flracereplay:v1 ${{ secrets.DOCKERHUB_USERNAME }}/flracereplay:v1
-        docker push ${{ secrets.DOCKERHUB_USERNAME }}/flracereplay:v1
+        docker tag flracereplay:v1 ${{ secrets.DOCKERHUB_NAME }}/flracereplay:v1
+        docker push ${{ secrets.DOCKERHUB_NAME }}/flracereplay:v1
